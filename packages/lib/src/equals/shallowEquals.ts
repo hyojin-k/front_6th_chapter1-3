@@ -1,4 +1,6 @@
 export const shallowEquals = (a: unknown, b: unknown) => {
+  if (a === b) return true;
+
   if (a !== null && b !== null) {
     // 배열 비교
     if (Array.isArray(a) && Array.isArray(b)) {
@@ -12,6 +14,7 @@ export const shallowEquals = (a: unknown, b: unknown) => {
     if (typeof a === "object" && typeof b === "object") {
       const objA = a as Record<string, unknown>;
       const objB = b as Record<string, unknown>;
+
       const keysA = Object.keys(objA);
       const keysB = Object.keys(objB);
 
@@ -27,5 +30,5 @@ export const shallowEquals = (a: unknown, b: unknown) => {
     }
   }
 
-  return a === b;
+  return false;
 };
