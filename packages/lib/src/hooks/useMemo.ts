@@ -8,7 +8,7 @@ export function useMemo<T>(factory: () => T, _deps: DependencyList, _equals = sh
   const resultRef = useRef<T | null>(null);
 
   // 의존성 비교
-  if (!_equals(depsRef.current, _deps)) {
+  if (depsRef.current === null || !_equals(depsRef.current, _deps)) {
     depsRef.current = _deps;
     resultRef.current = factory();
   }
