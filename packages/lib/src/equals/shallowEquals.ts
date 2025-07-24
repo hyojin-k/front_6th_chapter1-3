@@ -1,5 +1,5 @@
 export const shallowEquals = (a: unknown, b: unknown) => {
-  if (a === b) return true;
+  if (Object.is(a, b)) return true;
 
   if (typeof a !== "object" || a === null || typeof b !== "object" || b === null) return false;
 
@@ -14,7 +14,7 @@ export const shallowEquals = (a: unknown, b: unknown) => {
   }
 
   for (const key of keysA) {
-    if (objA[key] !== objB[key]) return false;
+    if (!Object.is(objA[key], objB[key])) return false;
   }
 
   return true;

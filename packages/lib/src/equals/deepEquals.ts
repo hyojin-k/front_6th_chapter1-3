@@ -1,5 +1,5 @@
 export const deepEquals = (a: unknown, b: unknown) => {
-  if (a === b) return true;
+  if (Object.is(a, b)) return true;
 
   if (typeof a !== "object" || a === null || typeof b !== "object" || b === null) return false;
 
